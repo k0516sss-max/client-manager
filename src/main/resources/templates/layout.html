@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja" th:fragment="layout (title, content)"> <!-- ← これを追加 -->
+
+<head>
+    <meta charset="UTF-8" />
+    <title th:replace="${title}">営業先管理</title>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+</head>
+
+<body>
+    <header>
+        <h1>営業先管理</h1>
+        <nav>
+            <a th:href="@{/clients}">一覧</a>
+            <a th:href="@{/clients/new}">新規</a>
+            <a th:href="@{/h2}" target="_blank">H2</a>
+        </nav>
+    </header>
+    <main>
+        <div th:insert="${content}"></div>
+    </main>
+</body>
+
+</html>

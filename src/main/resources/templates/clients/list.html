@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja" th:replace="~{layout :: layout (~{::title}, ~{::section})}">
+
+<head>
+    <title>営業先一覧</title>
+</head>
+<section>
+    <h2>営業先一覧</h2>
+    <a class="btn" th:href="@{/clients/new}">＋ 新規登録</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>名前</th>
+                <th>連絡先</th>
+                <th>次回訪問</th>
+                <th>メモ</th> <!-- ★追加 -->
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="c : ${clients}">
+                <td th:text="${c.name}"></td>
+                <td th:text="${c.contact}"></td>
+                <td th:text="${c.nextVisit}"></td>
+                <!-- ★ 長文は省略表示＋ホバーで全文表示 -->
+                <td class="note" th:title="${c.note}"
+                    th:text="${#strings.isEmpty(c.note) ? '' : (c.note.length() > 60 ? c.note.substring(0,60) + '…' : c.note)}">
+                </td>
+                <td>
+                    <a th:href="@{|/clients/${c.id}/edit|}">編集</a>
+                    <form th:action="@{|/clients/${c.id}/delete|}" method="post" style="display:inline">
+                        <button type="submit" class="linklike" onclick="return confirm('削除しますか？')">削除</button>
+                    </form>
+                </td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(clients)}">
+                <td colspan="5">データがありません</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+</html>

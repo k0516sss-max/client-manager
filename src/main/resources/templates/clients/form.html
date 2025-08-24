@@ -25,7 +25,6 @@
             <div class="error" th:if="${#fields.hasErrors('nextVisit')}" th:errors="*{nextVisit}">err</div>
         </div>
 
-        <!-- ★ メモ -->
         <div class="field">
             <label>メモ</label>
             <textarea th:field="*{note}" rows="4"></textarea>

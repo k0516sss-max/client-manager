@@ -33,7 +33,6 @@ public class Client {
     @Column(length = 500)
     private String note; // ★ 追加
 
-    // ---- getter/setter ----
     public Long getId() {
         return id;
     }

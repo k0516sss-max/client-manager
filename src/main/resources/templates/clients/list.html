@@ -14,7 +14,7 @@
                 <th>名前</th>
                 <th>連絡先</th>
                 <th>次回訪問</th>
-                <th>メモ</th> <!-- ★追加 -->
+                <th>メモ</th>
                 <th>操作</th>
             </tr>
         </thead>
@@ -23,7 +23,6 @@
                 <td th:text="${c.name}"></td>
                 <td th:text="${c.contact}"></td>
                 <td th:text="${c.nextVisit}"></td>
-                <!-- ★ 長文は省略表示＋ホバーで全文表示 -->
                 <td class="note" th:title="${c.note}"
                     th:text="${#strings.isEmpty(c.note) ? '' : (c.note.length() > 60 ? c.note.substring(0,60) + '…' : c.note)}">
                 </td>
